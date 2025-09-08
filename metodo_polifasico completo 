@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class metodo_polifasico {
+
+
+    public static List<List<Integer>> generarRuns(List<Integer> datos, int tamBloque) {
+        List<List<Integer>> runs = new ArrayList<>();
+        for (int i = 0; i < datos.size(); i += tamBloque) {
+            int fin = Math.min(i + tamBloque, datos.size());
+            List<Integer> bloque = new ArrayList<>(datos.subList(i, fin));
+            Collections.sort(bloque); 
+            runs.add(bloque);
+        }
+        return runs;
+    }
+
+
+    public static List<Integer> merge(List<Integer> a, List<Integer> b) {
+        List<Integer> res = new ArrayList<>();
+        int i = 0, j = 0;
+        while (i < a.size() && j < b.size()) {
+            if (a.get(i) <= b.get(j)) res.add(a.get(i++));
+            else res.add(b.get(j++));
+        }
+        while (i < a.size()) res.add(a.get(i++));
+        while (j < b.size()) res.add(b.get(j++));
+        return res;
+    }
+
+
+    public static int[] distribucionFibonacci(int n) {
+        List<Integer> fib = new ArrayList<>(Arrays.asList(1, 1));
+        while (fib.get(fib.size() - 1) < n) {
+            int size = fib.size();
+            fib.add(fib.get(size - 1) + fib.get(size - 2));
+        }
+        int f1 = fib.get(fib.size() - 1);
+        int f2 = fib.get(fib.size() - 2);
+        return new int[]{f2, f1 - f2}; 
+    }
