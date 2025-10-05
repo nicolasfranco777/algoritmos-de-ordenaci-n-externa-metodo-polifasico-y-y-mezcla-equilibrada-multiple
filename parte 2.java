@@ -2,7 +2,7 @@ public static void main(String[] args) {
         
         List<Integer> datos = Arrays.asList(23, 734, 178, 90, 2594, 1212, 5345, 747, 393, 536);
         System.out.println("Datos originales: " + datos);
-
+          
         
         List<List<Integer>> runs = generarRuns(datos, 3);
         System.out.println("\nRuns iniciales:");
